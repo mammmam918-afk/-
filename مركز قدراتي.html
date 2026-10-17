@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز قدراتي للتخاطب وتنمية المهارات - د/شمياء عبد الحميد</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            gold: '#f59e0b',
+                            purple: '#8b5cf6',
+                            dark: '#0b0f17',
+                            card: '#151c2c',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts (Cairo & Tajawal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b0f17;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Glowing & Gradient Effects */
+        .glow-emerald {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3);
+        }
+        .glow-purple {
+            box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.3);
+        }
+        .glass-nav {
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(21, 28, 44, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Name -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-500 via-teal-500 to-brand-purple p-0.5 shadow-lg shadow-brand-500/20">
+                        <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid font-bold fa-brain text-brand-500 text-2xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wide text-white block">مركز <span class="gradient-text">قدراتي</span></span>
+                        <span class="text-xs text-gray-400 block font-medium">للتخاطب وتنمية المهارات</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-1 space-x-reverse text-sm font-semibold">
+                    <a href="#home" class="px-4 py-2 rounded-lg text-brand-500 bg-brand-500/10 transition">الرئيسية</a>
+                    <a href="#about" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition">عن المركز</a>
+                    <a href="#services" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition">خدماتنا</a>
+                    <a href="#team" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition">الفريق الطبي</a>
+                    <a href="#quiz" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition">اختبار التقييم</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition">العنوان والتواصل</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="openBookingModal()" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-xl group bg-gradient-to-br from-brand-500 to-brand-purple group-hover:from-brand-500 group-hover:to-brand-purple hover:text-white text-white focus:outline-none">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-brand-dark rounded-[10px] group-hover:bg-opacity-0 font-bold flex items-center gap-2">
+                            <i class="fa-regular fa-calendar-check text-brand-500 group-hover:text-white transition"></i>
+                            احجز موعداً
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card/95 border-b border-brand-border px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" class="block px-3 py-2 rounded-lg text-brand-500 font-bold bg-brand-500/10">الرئيسية</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5">عن المركز</a>
+            <a href="#services" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5">خدماتنا</a>
+            <a href="#team" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5">الفريق الطبي</a>
+            <a href="#quiz" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5">اختبار التقييم</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5">العنوان والتواصل</a>
+            <button onclick="openBookingModal()" class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl shadow-lg transition">
+                <i class="fa-regular fa-calendar-check ml-2"></i> احجز موعداً الان
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        <!-- Ambient Glowing Background Elements -->
+        <div class="absolute top-1/4 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-brand-purple/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+                    
+                    <!-- Doctor Highlight Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-500/30 text-emerald-400 text-sm font-semibold animate-pulse">
+                        <i class="fa-solid fa-user-md text-brand-gold"></i>
+                        <span>إشراف طبي مميز: <strong class="text-white font-bold">دكتورة شيماء عبد الحميد</strong></span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white">
+                        نساعد طفلك ليعبّر عن عالمـه بـ <span class="gradient-text">طاقة وثقة</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                        مركز قدراتي المتخصص في التخاطب وتنمية المهارات وتعديل السلوك. نمتلك أحدث البرامج المعتمدة لرعاية أطفالكم وتجاوز كافة صعوبات الكلام والتعلم.
+                    </p>
+
+                    <!-- Address Callout Box -->
+                    <div class="p-4 rounded-2xl glass-card border-r-4 border-brand-500 flex items-center gap-4 text-right max-w-xl mx-auto lg:mx-0">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center shrink-0 text-brand-500 text-xl">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block font-medium">موقع المركز بوضوح:</span>
+                            <p class="text-base font-bold text-white">في وش مستشفى الهلال الأحمر مباشرة (أمام المستشفى)</p>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                        <button onclick="openBookingModal()" class="px-8 py-4 bg-gradient-to-r from-brand-500 to-teal-600 hover:from-brand-600 hover:to-teal-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-1 flex items-center gap-3">
+                            <i class="fa-solid fa-calendar-plus text-lg"></i>
+                            <span>احجز موعد كشف الان</span>
+                        </button>
+                        
+                        <a href="https://wa.me/+201029200352" target="_blank" class="px-8 py-4 glass-card hover:bg-white/10 text-white font-bold rounded-2xl transition-all border border-white/10 flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                            <span>استشارة سريعة</span>
+                        </a>
+                    </div>
+
+                    <!-- Key stats / Highlights -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-brand-border/60 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-brand-500">+1000</span>
+                            <span class="text-xs text-gray-400 font-medium">حالة تم شفائها</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-brand-purple">100%</span>
+                            <span class="text-xs text-gray-400 font-medium">رعاية متخصصة</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-brand-gold">10+</span>
+                            <span class="text-xs text-gray-400 font-medium">سنوات خبرة</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Hero Graphic / Doctor Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 via-brand-purple to-brand-gold rounded-3xl blur-lg opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <div class="relative rounded-3xl glass-card p-6 border border-white/10 space-y-6">
+                            
+                            <!-- Doctor Header Card -->
+                            <div class="flex items-center gap-4 border-b border-brand-border pb-6">
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-500 to-brand-purple p-1 shrink-0">
+                                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center overflow-hidden">
+                                        <i class="fa-solid fa-user-doctor text-4xl text-brand-500"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">المدير الطبي للمركز</span>
+                                    <h3 class="text-xl font-bold text-white">د. شيماء عبد الحميد</h3>
+                                    <p class="text-xs text-gray-300 mt-1">أخصائي التخاطب وتعديل السلوك وتنمية مهارات الأطفال</p>
+                                </div>
+                            </div>
+
+                            <!-- Bullet Feature Points -->
+                            <div class="space-y-3 text-sm text-gray-300">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center text-xs">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span>تشخيص دقيق لمشاكل تأخر النطق والكلام</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center text-xs">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span>جلسات فردية بأحدث التقنيات والمعدات</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center text-xs">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span>برامج خاصة للتأهل الزراعي والقوقعة</span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Action Card Footer -->
+                            <div class="pt-2">
+                                <a href="#contact" class="block w-full py-3 text-center bg-white/5 hover:bg-white/10 text-brand-500 hover:text-white rounded-xl border border-brand-500/30 transition text-sm font-bold">
+                                    موقعنا: أمام مستشفى الهلال الأحمر
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-950/60 border-y border-brand-border/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-500 text-sm font-bold tracking-widest uppercase mb-2">رؤيتنا ورسالتنا</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">لماذا نعتبر الخيار الأول لأطفالكم؟</h3>
+                <p class="text-gray-400 mt-4 text-base">في مركز قدراتي للتخاطب وتنمية المهارات، نؤمن بأن كل طفل يملك قدرات كامنة تحتاج فقط إلى التوجيه والأسلوب العلمي الصحيح لاكتشافها.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-brand-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">تشخيص وتقييم دقيق</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">تطبيق أحدث مقاييس التخاطب والذكاء والتوحد للوقوف على الأسباب الحقيقية وتصميم خطة علاجية فردية تناسب كل طفل.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-brand-purple/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">بيئة آمنة ومحفزة</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">قاعات مجهزة بأعلى معايير الأمان والأدوات التفاعلية والألعاب الهادفة التي تحول الجلسات إلى تجربة ممتعة للطفل.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">متابعة مستمرة مع الأسرة</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">نقدم إرشادات وتدريبات منزلية دورية لأولياء الأمور لضمان استمرار التطور وسرعة الاستجابة خارج المركز.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <h2 class="text-brand-500 text-sm font-bold tracking-widest uppercase mb-2">خدمات المركز</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">مجالات التخصص والرعاية الشاملة</h3>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md mt-4 md:mt-0">
+                    نقدم باقة كاملة من الخدمات التأهيلية تحت إشراف نخبة من المتخصصين بقيادة د. شبايب من عبد الحميد.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">تأخر الكلام وتنمية اللغات</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">علاج تأخر النطق والتأخر اللغوي النوعي، وزيادة حصيلة الكلمات والقدرة على التعبير والتركيب اللغوي السليم.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-brand-500 group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-brand-purple/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">التلعثم وزراعة القوقعة</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">تأهيل أطفال زراعة القوقعة وضعاف السمع، وعلاج الحبسة الكلامية التلعثم (التهتهة) باستراتيجيات حديثة.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-brand-purple group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-brand-gold/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-child-reaching"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">تعديل السلوك وتنمية المهارات</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">علاج السلوكيات العدوانية، العناد، العصبية، وتنمية المهارات الإدراكية والحركية والاجتماعية للطفل.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-brand-gold group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">صعوبات التعلم والتركيز</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">برامج متخصصة لعلاج صعوبات القراءة والتكتب والحساب، وفرط الحركة وتشتت الانتباه (ADHD).</p>
+                    <span class="inline-flex items-center text-xs font-bold text-blue-400 group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-pink-500/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">جلسات التكامل الحسي</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">غرف حركية وحسية متكاملة للتعامل مع الاضطرابات الحسية لأطفال التوحد وطيف التوحد.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-pink-400 group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-1 transition duration-300 border border-white/5 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">التأهيل المدرسي والأكاديمي</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">إعداد الطفل للمدرسة وتطوير مهارات التواصل والتفاعل مع الأقران والمعلمين بثقة.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-teal-400 group-hover:translate-x-[-4px] transition">تعرف على التفاصيل <i class="fa-solid fa-arrow-left mr-2"></i></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Team Section -->
+    <section id="team" class="py-20 bg-slate-950/60 border-t border-brand-border/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-500 text-sm font-bold tracking-widest uppercase mb-2">النخبة الطبية</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">فريق طبـي متكامل على أعلى مستوى</h3>
+                <p class="text-gray-400 mt-4 text-base">بقيادة دكتورة شبايب من عبد الحميد، يضم المركز أخصائيين ذوي خبرة وكفاءة عالية.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Doctor Card 1 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-brand-500/30 relative">
+                    <div class="absolute top-4 right-4 bg-brand-gold/20 text-brand-gold text-xs font-bold px-3 py-1 rounded-full">
+                        رئيس المركز
+                    </div>
+                    <div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-brand-500 to-brand-purple p-1 mb-4 shadow-lg shadow-brand-500/20">
+                        <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user-doctor text-5xl text-brand-500"></i>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-extrabold text-white">د. شبايب من عبد الحميد</h4>
+                    <p class="text-brand-500 text-sm font-semibold mt-1">استشاري التخاطب وتعديل السلوك</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">خبرة واسعة في علاج حالات تأخر الكلام، التلعثم، واضطرابات التواصل وتطوير المهارات لدى الأطفال.</p>
+                    <button onclick="openBookingModal('د. شبايب من عبد الحميد')" class="mt-6 w-full py-2.5 bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white rounded-xl font-bold text-sm transition duration-200">
+                        حجز موعد مع الدكتورة
+                    </button>
+                </div>
+
+                <!-- Doctor Card 2 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-white/5 relative">
+                    <div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-brand-purple to-pink-500 p-1 mb-4">
+                        <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user-nurse text-5xl text-brand-purple"></i>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-extrabold text-white">فريق أخصائيي تنمية المهارات</h4>
+                    <p class="text-brand-purple text-sm font-semibold mt-1">تنمية المهارات وصعوبات التعلم</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">متخصصون في رفع المهارات الإدراكية والأكاديمية وتعديل السلوكيات للحد من التشتت.</p>
+                    <button onclick="openBookingModal('أخصائي تنمية المهارات')" class="mt-6 w-full py-2.5 bg-white/5 hover:bg-brand-purple text-gray-300 hover:text-white rounded-xl font-bold text-sm transition duration-200">
+                        طلب حجز جلسة
+                    </button>
+                </div>
+
+                <!-- Doctor Card 3 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-white/5 relative">
+                    <div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-blue-500 to-teal-400 p-1 mb-4">
+                        <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-hands-holding-child text-5xl text-blue-400"></i>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-extrabold text-white">فريق التكامل الحسي</h4>
+                    <p class="text-blue-400 text-sm font-semibold mt-1">أخصائيو العلاج الوظيفي والحسي</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">تدريب الطفل على تنظيم المثيرات الحسية المختلفة وتطوير التآزر الحركي البصري.</p>
+                    <button onclick="openBookingModal('أخصائي التكامل الحسي')" class="mt-6 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-gray-300 hover:text-white rounded-xl font-bold text-sm transition duration-200">
+                        طلب حجز جلسة
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz / Assessment Tool for Parents -->
+    <section id="quiz" class="py-20 relative bg-gradient-to-b from-transparent via-slate-900/50 to-transparent">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-500/20 relative">
+                <div class="text-center mb-8">
+                    <span class="px-4 py-1 rounded-full bg-brand-500/10 text-brand-500 text-xs font-bold">اختبار سريع لأولياء الأمور</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">هل يحتاج طفلك إلى جلسات تخاطب؟</h3>
+                    <p class="text-gray-400 text-sm mt-2">أجب على 3 أسئلة سريعة لمعرفة التقييم الأولي لحالة طفلك</p>
+                </div>
+
+                <!-- Interactive Quiz Container -->
+                <div id="quiz-container" class="space-y-6">
+                    
+                    <!-- Question 1 -->
+                    <div class="quiz-step space-y-4">
+                        <h4 class="text-lg font-bold text-white">1. ما هو عمر الطفل حالياً؟</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button onclick="selectOption(this, 1)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                أقل من سنتين
+                            </button>
+                            <button onclick="selectOption(this, 1)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                من 2 إلى 4 سنوات
+                            </button>
+                            <button onclick="selectOption(this, 1)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                أكبر من 4 سنوات
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-step space-y-4">
+                        <h4 class="text-lg font-bold text-white">2. هل يواجه الطفل صعوبة في التعبير عن احتياجاته بالكلمات؟</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button onclick="selectOption(this, 2)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                نعم، يعتمد على الإشارات أو البكاء
+                            </button>
+                            <button onclick="selectOption(this, 2)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                لا، يتكلم ولكن حصيلته اللغوية قليلة جداً
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-step space-y-4">
+                        <h4 class="text-lg font-bold text-white">3. هل يتواصل معك بصرياً بشكل جيد عند الحديث معه؟</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button onclick="selectOption(this, 3)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                نعم، يتواصل بشكل طبيعي
+                            </button>
+                            <button onclick="selectOption(this, 3)" class="quiz-opt py-3 px-4 rounded-xl bg-white/5 hover:bg-brand-500/20 border border-white/10 text-gray-300 text-right text-sm font-medium transition">
+                                يتجنب النظر في الأعين نادراً أو غالباً
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="submit-quiz" onclick="showQuizResult()" disabled class="w-full py-4 bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-bold rounded-xl shadow-lg transition text-base">
+                        إظهار نتيجة التقييم الأولية
+                    </button>
+                </div>
+
+                <!-- Result Box (Hidden by default) -->
+                <div id="quiz-result" class="hidden text-center space-y-6">
+                    <div class="w-16 h-16 bg-brand-500/20 text-brand-500 rounded-full flex items-center justify-center mx-auto text-3xl">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white">نتيجة التقييم الأولي:</h4>
+                    <p class="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
+                        بناءً على إجاباتك، يفضل التوجه لعمل تقييم شامل ومقياس لغوي للطفل للوقوف على أي تأخر في النمو اللغوي أو مهارات التواصل مبكراً مع <strong class="text-brand-500">د. شبايب من عبد الحميد</strong>.
+                    </p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="openBookingModal()" class="px-6 py-3 bg-brand-500 text-white font-bold rounded-xl hover:bg-brand-600 transition">
+                            احجز استشارة الان
+                        </button>
+                        <button onclick="resetQuiz()" class="px-6 py-3 bg-white/10 text-gray-300 font-bold rounded-xl hover:bg-white/20 transition">
+                            إعادة الاختبار
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <h2 class="text-brand-500 text-sm font-bold tracking-widest uppercase mb-2">تواصل معنا</h2>
+                        <h3 class="text-3xl font-extrabold text-white">سعداء باستقبالكم في مركز قدراتي</h3>
+                        <p class="text-gray-400 text-sm mt-3">نحن متواجدون لخدمة أطفالكم والإجابة على كافة استفساراتكم طوال أيام الأسبوع.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        
+                        <!-- Address Box Highlights -->
+                        <div class="p-5 rounded-2xl glass-card border border-brand-500/40 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">العنوان بالتفصيل:</h4>
+                                <p class="text-brand-gold font-bold text-lg mt-1">في وش مستشفى الهلال الأحمر مباشرة</p>
+                                <p class="text-gray-400 text-xs mt-1">مركز قدراتي للتخاطب وتنمية المهارات</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone Box -->
+                        <div class="p-5 rounded-2xl glass-card flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">أرقام التواصل والتأكيد:</h4>
+                                <p class="text-gray-300 text-sm mt-1 font-mono">01029200352</p>
+                                <p class="text-gray-400 text-xs mt-1">م متاح للرد يومياً من 10 صباحاً حتى 9 مساءً</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Action Quick link -->
+                        <a href="https://wa.me/201000000000" target="_blank" class="p-5 rounded-2xl glass-card hover:border-emerald-500 transition flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">تواصل مباشرة عبر واتساب</h4>
+                                    <p class="text-gray-400 text-xs">استفسر عن مواعيد الكشف والأسعار</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-left text-gray-500 group-hover:text-emerald-400 transition"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- Simulated Interactive Map Card -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card rounded-3xl p-4 border border-white/10 relative overflow-hidden h-[420px] flex flex-col justify-between">
+                        
+                        <!-- Map Visual Header -->
+                        <div class="bg-slate-900/90 rounded-2xl p-4 flex justify-between items-center z-10">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-hospital text-red-500 text-xl"></i>
+                                <div>
+                                    <span class="text-white text-xs font-bold block">العلامة المميزة</span>
+                                    <span class="text-gray-400 text-xs">أمام مستشفى الهلال الأحمر</span>
+                                </div>
+                            </div>
+                            <a href="https://maps.google.com" target="_blank" class="px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs rounded-xl transition">
+                                <i class="fa-solid fa-location-arrow ml-1"></i> فتح في خرائط جوجل
+                            </a>
+                        </div>
+
+                        <!-- Stylized Dark Map Visual Placeholder -->
+                        <div class="absolute inset-0 bg-slate-900 flex items-center justify-center p-6">
+                            <!-- Background Map Graphic Effect -->
+                            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                            
+                            <!-- Location Marker Pin Graphic -->
+                            <div class="relative z-10 text-center space-y-3">
+                                <div class="relative inline-block">
+                                    <div class="w-16 h-16 bg-brand-500/30 rounded-full animate-ping absolute inset-0"></div>
+                                    <div class="w-16 h-16 bg-brand-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl shadow-brand-500/50 relative z-10">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                </div>
+                                <div class="bg-brand-dark/90 p-4 rounded-2xl border border-white/10 max-w-xs shadow-2xl">
+                                    <h5 class="text-white font-extrabold text-sm">مركز قدراتي للتخاطب</h5>
+                                    <p class="text-brand-gold text-xs font-bold mt-1">مواجه لمستشفى الهلال الأحمر</p>
+                                    <p class="text-gray-400 text-[11px] mt-1">سهولة التوصل والوصول عبر كافة المواصلات</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/90 rounded-2xl p-3 text-center z-10 text-xs text-gray-400">
+                            مركز قدراتي - د. شيماء عبد الحميد | أهلاً بكم في أي وقت
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-border bg-slate-950 py-12 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-right">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <i class="fa-solid fa-brain text-brand-500 text-xl"></i>
+                        <span class="text-white font-extrabold text-lg">مركز قدراتي للتخاطب</span>
+                    </div>
+                    <p class="text-xs text-gray-500">تحت إشراف دكتورة شيماء عبد الحميد - العنوان: أمام مستشفى الهلال الأحمر مباشرة.</p>
+                </div>
+
+                <div class="flex items-center gap-6 text-xs text-gray-400">
+                    <a href="#home" class="hover:text-white transition">الرئيسية</a>
+                    <a href="#about" class="hover:text-white transition">عن المركز</a>
+                    <a href="#services" class="hover:text-white transition">الخدمات</a>
+                    <a href="#contact" class="hover:text-white transition">الموقع والتواصل</a>
+                </div>
+
+                <div class="text-xs text-gray-500">
+                    &copy; 2026 جميع الحقوق محفوظة لمركز قدراتي.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal Dialog -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card bg-slate-900 border border-white/10 w-full max-w-lg rounded-3xl p-6 sm:p-8 relative shadow-2xl">
+            
+            <!-- Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-5 left-5 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Title -->
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center mx-auto text-xl mb-3">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white">حجز موعد كشف أو جلسة</h3>
+                <p class="text-xs text-gray-400 mt-1">مركز قدراتي للتخاطب - د. شيماء عبد الحميد</p>
+            </div>
+
+            <!-- Form -->
+            <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">اسم ولي الأمر / الطفل</label>
+                    <input type="text" required placeholder="أدخل الاسم بالكامل" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">رقم الهاتف (واتساب)</label>
+                        <input type="tel" required placeholder="01000000000" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">عمر الطفل</label>
+                        <input type="text" placeholder="مثال: 4 سنوات" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">نوع الخدمة المطلوب حجزها</label>
+                    <select id="service-select" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition">
+                        <option value="تخاطب وتأخر كلام">جلسة تخاطب وتأخر كلام</option>
+                        <option value="تعديل سلوك">تعديل سلوك وتنمية مهارات</option>
+                        <option value="صعوبات تعلم">صعوبات تعلم وتشتت انتباه</option>
+                        <option value="تكامل حسي">جلسة تكامل حسي</option>
+                        <option value="استشارة مع د.شيماء">استشارة مع د. شيماء عبد الحميد</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">ملاحظات إضافية (اختياري)</label>
+                    <textarea rows="2" placeholder="اكتب أي معلومات يحتاجها الطبيب..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-500 to-teal-600 hover:from-brand-600 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg transition text-base">
+                    تأكيد طلب الحجز
+                </button>
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="booking-success" class="hidden text-center py-8 space-y-4">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4 class="text-xl font-bold text-white">تم استلام طلب الحجز بنجاح!</h4>
+                <p class="text-sm text-gray-300">سيتواصل معك فريق مركز قدراتي لتأكيد الموعد الدقيق للكشف في أقرب وقت.</p>
+                <div class="p-3 bg-white/5 rounded-xl text-xs text-brand-gold font-bold">
+                    العنوان: أمام مستشفى الهلال الأحمر مباشرة
+                </div>
+                <button onclick="closeBookingModal()" class="px-6 py-2.5 bg-brand-500 text-white font-bold rounded-xl text-sm">
+                    إغلاق
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Controls
+        function openBookingModal(doctorName = null) {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.remove('hidden');
+            
+            if (doctorName) {
+                const select = document.getElementById('service-select');
+                select.value = 'استشارة مع د. شبايب';
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            // Reset form status
+            document.getElementById('booking-form').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+            // Simulate form submission
+            document.getElementById('booking-form').classList.add('hidden');
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+
+        // Quiz Logic
+        let answeredQuestions = 0;
+
+        function selectOption(button, questionNum) {
+            // Unselect sibling options in the same question
+            const parentContainer = button.parentElement;
+            const buttons = parentContainer.querySelectorAll('.quiz-opt');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-500', 'text-white', 'border-brand-500');
+                btn.classList.add('bg-white/5', 'text-gray-300', 'border-white/10');
+            });
+
+            // Highlight selected
+            button.classList.remove('bg-white/5', 'text-gray-300', 'border-white/10');
+            button.classList.add('bg-brand-500', 'text-white', 'border-brand-500');
+
+            // Enable submit button when all 3 answered
+            answeredQuestions++;
+            if (answeredQuestions >= 3) {
+                document.getElementById('submit-quiz').removeAttribute('disabled');
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            answeredQuestions = 0;
+            document.getElementById('submit-quiz').setAttribute('disabled', 'true');
+            
+            const buttons = document.querySelectorAll('.quiz-opt');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-500', 'text-white', 'border-brand-500');
+                btn.classList.add('bg-white/5', 'text-gray-300', 'border-white/10');
+            });
+
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+        }
+    </script>
+</body>
+                      </html>
